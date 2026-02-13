@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>I Love</title>
+<link rel="stylesheet" href="yes_styles.css">
+<style>
+/* Final button styling */
+#finalButton {
+    display: none;
+    margin-top: 20px;
+    padding: 12px 28px;
+    background: linear-gradient(45deg, #8bb640, #8fbc8f);
+    border-radius: 40px;
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    transition: transform 0.3s ease;
+}
+#finalButton:hover {
+    transform: scale(1.1);
+}
+</style>
+</head>
+<body>
+
+<div class="love-container">
+    <h1 id="loveText">Click it in order</h1>
+
+    <!-- Buttons -->
+    <a href="album.html" class="heart-button" data-id="letter">1</a>
+    <a href="letter.html" class="heart-button" data-id="album">2</a>
+    <a href="anniversary.html" class="heart-button" data-id="anniversary">3</a>
+    <a href="flower.html" class="heart-button" data-id="flower">4</a>
+
+    <!-- Final button -->
+    <a href="lastpage.html" class="heart-button" id="finalButton">5</a>
+</div>
+
+<!-- Optional background scatter for parallax -->
+<div class="background-scatter">
+    <!-- Add your floating images here -->
+</div>
+
+<script>
+// ----- Show love text function -----
+function showLove() {
+    const loveText = document.getElementById("loveText");
+
+    loveText.textContent = "Forever and always, my Valentine";
+
+    loveText.style.transform = "scale(1.1)";
+    setTimeout(() => {
+        loveText.style.transform = "scale(1)";
+    }, 300);
+}
+
+// ----- Parallax effect -----
+const scatter = document.querySelector('.background-scatter');
+if(scatter){
+    document.addEventListener('mousemove', (e) => {
+        const x = (e.clientX / window.innerWidth - 0.5) * 40;
+        const y = (e.clientY / window.innerHeight - 0.5) * 40;
+
+        scatter.querySelectorAll('img').forEach((img, i) => {
+            const depth = (i % 5) * 8;
+            img.style.transform = `translateX(${x - depth}px) translateY(${y - depth}px) rotate(${img.style.transform.split('rotate(')[1] || '0deg'}) translateZ(-${depth}px)`;
+        });
+    });
+}
+
+// ----- Track clicked buttons -----
+const buttons = document.querySelectorAll('.heart-button[data-id]');
+const finalButton = document.getElementById('finalButton');
+
+// Load clicked buttons from localStorage
+let clicked = new Set(JSON.parse(localStorage.getItem('clickedButtons') || '[]'));
+
+// Show final button if all were clicked before
+if(clicked.size === buttons.length){
+    finalButton.style.display = 'inline-block';
+}
+
+buttons.forEach(button => {
+    button.addEventListener('click', (e) => {
+        e.preventDefault(); // prevent immediate navigation
+
+        // Add clicked button to set
+        clicked.add(button.dataset.id);
+
+        // Save to localStorage
+        localStorage.setItem('clickedButtons', JSON.stringify(Array.from(clicked)));
+
+        // Show final button if all clicked
+        if(clicked.size === buttons.length){
+            finalButton.style.display = 'inline-block';
+        }
+
+        // Optional effect
+        button.style.transform = "scale(1.1)";
+        setTimeout(() => button.style.transform = "scale(1)", 200);
+
+        // Navigate after short delay
+        setTimeout(() => {
+            window.location.href = button.href;
+        }, 150);
+    });
+});
+</script>
+
+</body>
+</html>

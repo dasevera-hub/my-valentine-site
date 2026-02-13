@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Secret Message</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* BASE STYLES */
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background: #e5ddd5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* CHAT CONTAINER */
+.chat-container {
+    width: 400px;
+    max-width: 95%;
+    height: 600px;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* CHAT HEADER */
+.chat-header {
+    background: #075e54;
+    color: white;
+    padding: 15px;
+    font-weight: 500;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+/* CHAT MESSAGES */
+.chat-messages {
+    flex: 1;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    overflow-y: auto;
+}
+
+/* MESSAGE BUBBLE */
+.message {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    background: #dcf8c6;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.message.unseen {
+    font-weight: 500;
+    background: #a0d468;
+}
+
+.message:hover {
+    transform: scale(1.03);
+}
+
+/* PROFILE IMAGE */
+.message img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    margin-right: 10px;
+    object-fit: cover;
+}
+
+/* MESSAGE TEXT */
+.message-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.message-text .name {
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.message-text .preview {
+    font-size: 0.85rem;
+    color: #555;
+}
+
+/* LETTER CONTAINER */
+.letter-container {
+    display: none;
+    flex-direction: column;
+    padding: 40px 30px;
+    margin: auto;
+    background: #ffffff;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 500px;
+    text-align: left;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+}
+
+.letter-container h1 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.letter-container p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #444;
+}
+
+/* BACK BUTTON */
+.back-btn {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 10px 25px;
+    background: linear-gradient(45deg, #8bb640, #8fbc8f);
+    border-radius: 25px;
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    transition: transform 0.3s ease;
+}
+
+.back-btn:hover {
+    transform: scale(1.1);
+}
+
+/* FADE-IN ANIMATION */
+.fadeIn {
+    animation: fadeSlideIn 1s ease forwards;
+    opacity: 0;
+}
+
+@keyframes fadeSlideIn {
+    0% { opacity: 0; transform: translateY(20px);}
+    100% { opacity: 1; transform: translateY(0);}
+}
+</style>
+</head>
+<body>
+
+<div class="chat-container">
+
+    <!-- Chat Header -->
+    <div class="chat-header">
+        Notification
+    </div>
+
+    <!-- Chat Messages -->
+    <div class="chat-messages" id="chatMessages">
+        <div class="message unseen" id="unseenMessage">
+            <div class="photo"><img src="images/628011016_1704168817220853_3336707876073642917_n.jpg"></div>
+            <div class="message-text">
+                <span class="name">Denver Severa</span>
+                <span class="preview">You have a new message</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hidden Letter Message -->
+    <div class="letter-container" id="letter">
+        <h1>To Alyana</h1>
+        <p>
+            Alam kong nakakagulat, narealize ko lang kasi nitong nakaraan na tama ka, nagbabago na ako, hindi ako yung dati na nakakasama mo araw araw, ni hindi ngako nakapag prepare o nakapaghanda para makapunta dyan ngayong feb 14. Nagtry ako gumawa ito para naman mafeel mo na special ka aken at para nadin hindi mo na isipin na hindi na kita mahal , kasi sa totoo lang, special ka saken at  mahal na mahal kita sobra.
+        </p>
+
+        <!-- Back button -->
+        <a href="index.html" class="back-btn">Back to Home</a>
+    </div>
+
+</div>
+
+<script>
+const unseen = document.getElementById('unseenMessage');
+const letter = document.getElementById('letter');
+const chatMessages = document.getElementById('chatMessages');
+
+unseen.addEventListener('click', () => {
+    unseen.classList.remove('unseen'); // mark as read
+    unseen.textContent = "Message opened";
+
+    // Hide chat messages and expand letter to full page
+    chatMessages.style.display = 'none';
+    letter.style.display = 'flex';
+    letter.classList.add('fadeIn');
+});
+</script>
+
+</body>
+</html>

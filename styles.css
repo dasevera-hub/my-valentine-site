@@ -1,0 +1,72 @@
+body {
+   background: #f0f4f3; /* soft neutral background */
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    text-align: center;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #e91e63;
+    transition: opacity 1s ease;
+}
+
+button {
+    padding: 12px 28px;
+    font-size: 1.2rem;
+    border-radius: 40px;
+    border: none;
+    background: linear-gradient(45deg, #ff4081, #f50057);
+    color: white;
+    cursor: pointer;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    margin-top: 20px;
+}
+
+button:hover {
+    transform: scale(1.1);
+}
+
+/* Fade-in animation for new text */
+.fade-in {
+    opacity: 0;
+    animation: fadeInText 1s forwards;
+}
+
+@keyframes fadeInText {
+    to { opacity: 1; }
+}
+h1 {
+    font-size: 2.5rem;
+    color: #e91e63;
+    transition: opacity 1s ease; /* smooth fade out */
+}
+
+.fade-in {
+    opacity: 0;
+    animation: fadeInText 1s forwards;
+}
+
+@keyframes fadeInText {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+button {
+    padding: 12px 28px;
+    font-size: 1.2rem;
+    border-radius: 40px;
+    border: none;
+    background: linear-gradient(45deg, #ff4081, #f50057);
+    color: white;
+    cursor: pointer;
+    transition: transform 0.3s ease, opacity 1s ease; /* smooth fade out */
+    margin-top: 20px;
+}

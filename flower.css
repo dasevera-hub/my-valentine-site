@@ -1,0 +1,140 @@
+/* BASE STYLES */
+body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(to top, #cbe7cb, #355e3b);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Arial', sans-serif;
+    color: white;
+    text-align: center;
+    overflow: hidden;
+}
+
+/* PAGE TITLE */
+.flower-scene h1 {
+    margin-bottom: 50px;
+    font-size: 2.8rem;
+    animation: fadeIn 2s ease forwards;
+}
+
+/* FLOWER */
+.flower {
+    position: relative;
+    width: 180px;
+    height: 180px;
+    margin: auto;
+}
+
+/* PETALS */
+.petal {
+    width: 70px;
+    height: 100px;
+    background: radial-gradient(circle at 50% 30%, #ffb6c1, #ff69b4);
+    border-radius: 50%;
+    position: absolute;
+    top: 20%;              
+    left: 50%;             
+    transform-origin: bottom center;
+    opacity: 0;
+    animation: bloom 1.5s forwards;
+}
+
+/* 8 petals rotation */
+.p1 { --rotate: 0deg;    animation-delay: 0.05s; }
+.p2 { --rotate: 45deg;   animation-delay: 0.15s; }
+.p3 { --rotate: 90deg;   animation-delay: 0.25s; }
+.p4 { --rotate: 135deg;  animation-delay: 0.35s; }
+.p5 { --rotate: 180deg;  animation-delay: 0.45s; }
+.p6 { --rotate: 225deg;  animation-delay: 0.55s; }
+.p7 { --rotate: 270deg;  animation-delay: 0.65s; }
+.p8 { --rotate: 315deg;  animation-delay: 0.75s; }
+
+/* FLOWER CENTER */
+.center {
+    width: 50px;
+    height: 50px;
+    background: radial-gradient(circle at 30% 30%, #f7e967, #e6c800);
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    opacity: 0;
+    animation: fadeIn 1s 1s forwards;
+}
+
+/* STEM */
+.stem {
+    width: 10px;
+    height: 120px;
+    background: linear-gradient(to bottom, #2c662d, #1e3f1e);
+    position: absolute;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 5px;
+}
+
+/* LEAVES */
+.leaf {
+    width: 60px;
+    height: 30px;
+    background: linear-gradient(to bottom right, #3b8d3b, #2e6b2e);
+    border-radius: 50%;
+    position: absolute;
+    top: 130px;       /* relative to stem */
+    left: 35px;       /* left side */
+    transform: rotate(-40deg);
+    animation: sway 3s infinite alternate ease-in-out;
+}
+
+.leaf2 {
+    width: 60px;
+    height: 30px;
+    background: linear-gradient(to bottom right, #3b8d3b, #2e6b2e);
+    border-radius: 50%;
+    position: absolute;
+    top: 150px;       /* relative to stem */
+    right: 35px;      /* right side */
+    transform: rotate(40deg);
+    animation: sway2 3s infinite alternate ease-in-out;
+}
+
+/* BACK BUTTON */
+.back-btn {
+    display: inline-block;
+    margin-top: 50px;
+    padding: 14px 32px;
+    background: linear-gradient(45deg, #8bb640, #8fbc8f);
+    border-radius: 40px;
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    transition: transform 0.3s ease;
+}
+
+.back-btn:hover { transform: scale(1.15); }
+
+/* ANIMATIONS */
+@keyframes bloom {
+    0% { opacity: 0; transform: translate(-50%, -50%) scale(0) rotate(0deg); }
+    100% { opacity: 1; transform: translate(-50%, -50%) scale(1) rotate(var(--rotate)); }
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes sway {
+    0% { transform: rotate(-40deg); }
+    100% { transform: rotate(-50deg); }
+}
+
+@keyframes sway2 {
+    0% { transform: rotate(40deg); }
+    100% { transform: rotate(50deg); }
+}

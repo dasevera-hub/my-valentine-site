@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Our Memories</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0e0e0e;
+            font-family: Arial, sans-serif;
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .album-container {
+            width: 90%;
+            max-width: 1000px;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .album-title {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .album-sub {
+            font-size: 1rem;
+            color: #aaa;
+            margin-bottom: 60px;
+        }
+
+        /* SLIDESHOW */
+        .gallery {
+            position: relative;
+            width: 100%;
+            max-width: 650px;
+            height: 450px;
+            margin: 0 auto;
+        }
+
+        .photo {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
+            overflow: hidden;
+            opacity: 0;
+            transition: opacity 1.5s ease;
+        }
+
+        .photo.active {
+            opacity: 1;
+        }
+
+        .photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .back-button {
+            margin-top: 70px;
+            padding: 12px 30px;
+            background: transparent;
+            border: 1px solid white;
+            color: white;
+            border-radius: 40px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="album-container">
+
+    <h1 class="album-title">Our Memories</h1>
+    <p class="album-sub">Every moment with you feels eternal.</p>
+
+    <div class="gallery">
+
+        <!-- YOUR 21 TELEGRAM PHOTOS -->
+        <div class="photo active"><img src="images/photo_6086978178070023413_y.jpg"></div>
+        <div class="photo"><img src="images/photo_6086978178070023412_y.jpg"></div>
+        <div class="photo"><img src="images/photo_6086978178070023411_y.jpg"></div>
+        <div class="photo"><img src="images/photo_6086978178070023410_y.jpg"></div>
+        <div class="photo"><img src="images/photo_6086978178070023406_y.jpg"></div>
+        <div class="photo"><img src="images/photo_6086978178070023408_y.jpg"></div>
+        <div class="photo"><img src="images/photo_6086978178070023409_y.jpg"></div>
+        <div class="photo"><img src="images/photo_6086978178070023407_y.jpg"></div>
+        <div class="photo"><img src="images/photo_6086978178070023405_y.jpg"></div>
+        <div class="photo"><img src="images/photo_6086978178070023404_y.jpg"></div>
+        <div class="photo"><img src="images/photo_6086978178070023402_y.jpg"></div>
+        <div class="photo"><img src="images/photo_6086978178070023403_y.jpg"></div>
+        <div class="photo"><img src="images/photo_6086978178070023401_y.jpg"></div>
+        <div class="photo"><img src="images/photo_6086978178070023400_y.jpg"></div>
+        <div class="photo"><img src="images/photo_6086978178070023399_y.jpg"></div>
+        <div class="photo"><img src="images/photo_6086978178070023397_y.jpg"></div>
+        <div class="photo"><img src="images/photo_6086978178070023396_y.jpg"></div>
+        <div class="photo"><img src="images/photo_6086978178070023398_y.jpg"></div>
+        <div class="photo"><img src="images/photo_6086978178070023395_y.jpg"></div>
+        <div class="photo"><img src="images/photo_6086978178070023393_y.jpg"></div>
+        <div class="photo"><img src="images/photo_6086978178070023394_y.jpg"></div>
+
+    </div>
+
+    <button class="back-button" onclick="goBack()">Back to Love</button>
+
+</div>
+
+<!-- 🎵 YOUR SONG -->
+<audio id="bgMusic" loop>
+    <source src="New High.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+    const photos = document.querySelectorAll('.photo');
+    let index = 0;
+
+    function showNextPhoto() {
+        photos[index].classList.remove('active');
+        index = (index + 1) % photos.length;
+        photos[index].classList.add('active');
+    }
+
+    setInterval(showNextPhoto, 3000);
+
+    function goBack() {
+        window.location.href = "index.html";
+    }
+
+    const music = document.getElementById("bgMusic");
+
+    document.addEventListener("click", function () {
+        music.volume = 0.4;
+        music.play();
+    }, { once: true });
+</script>
+
+</body>
+</html>

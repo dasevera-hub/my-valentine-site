@@ -1,0 +1,118 @@
+/* ===== BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(to bottom right, #c0d6b8, #a3bfa0);
+    font-family: 'Arial', sans-serif;
+    color: #f4f7f2; /* softer white */
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ===== CONTAINER ===== */
+.album-container {
+    width: 90%;
+    max-width: 1000px;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+/* ===== TITLE ===== */
+.album-title {
+    font-size: 3rem;
+    font-weight: 300;
+    letter-spacing: 4px;
+    margin-bottom: 10px;
+    opacity: 0;
+    animation: fadeIn 2s ease forwards;
+    color: #2f4f3f; /* deep sage contrast */
+}
+
+.album-sub {
+    font-size: 1rem;
+    color: #5f7d6e; /* muted sage */
+    margin-bottom: 60px;
+    opacity: 0;
+    animation: fadeIn 3s ease forwards;
+}
+
+/* ===== CALENDAR ===== */
+.calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 12px;
+    margin-bottom: 60px;
+}
+
+/* Days Header */
+.day {
+    background: #000000; /* muted sage */
+    color: #f4f7f2;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-radius: 15px;
+    padding: 18px;
+}
+
+/* Dates */
+.date {
+    background: #e7efe6; /* light sage/cream */
+    color: #2f4f3f;
+    font-size: 1.2rem;
+    border-radius: 15px;
+    padding: 20px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+/* Hover */
+.date:hover {
+    transform: scale(1.08);
+    background: #b7d3b0;
+    color: #1e3328;
+}
+
+/* Highlight anniversary */
+.date.highlight {
+    background: #4f7c66; /* darker sage */
+    color: #ffffff;
+    box-shadow: 0 0 20px rgba(79, 124, 102, 0.4);
+}
+
+/* Empty cells */
+.date.empty {
+    background: transparent;
+    box-shadow: none;
+    cursor: default;
+}
+
+/* ===== BUTTON ===== */
+.back-button {
+    margin-top: 20px;
+    padding: 12px 30px;
+    background: transparent;
+    border: 1px solid #2f4f3f;
+    color: #2f4f3f;
+    border-radius: 40px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.back-button:hover {
+    background: #2f4f3f;
+    color: #ffffff;
+}
+
+/* ===== FADE ANIMATION ===== */
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
